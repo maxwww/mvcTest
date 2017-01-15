@@ -30,7 +30,7 @@ class Application
             $action = 'action' . ucfirst($action);
 
             if (method_exists($controller, $action)) {
-                $controller->$action();
+                echo $controller->$action();
             } else {
                 header("HTTP/1.1 404 Not Found");
                 header("Status: 404 Not Found");
