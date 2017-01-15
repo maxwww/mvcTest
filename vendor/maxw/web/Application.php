@@ -1,6 +1,7 @@
 <?php
 
 namespace maxw\web;
+
 /**
  * Class Application
  */
@@ -11,7 +12,7 @@ class Application
         $route = isset($_GET['r']) ? $_GET['r'] : null;
 
 
-        if ($route !== null) {
+        if ($route !== null && isset($route[0]) && $route[0] != "") {
             $route = explode('/', $route);
             $classController = ucfirst($route[0]) . 'Controller';
         } else {
@@ -21,6 +22,7 @@ class Application
 
         if (file_exists(__DIR__ . '/../../../controllers/' . $classController . '.php')) {
             require(__DIR__ . '/../../../controllers/' . $classController . '.php');
+            $classController = "\\app\\controllers\\" . $classController;
             $controller = new $classController();
 
 
@@ -44,13 +46,4 @@ class Application
 
 
     }
-}
-
-
-function debug($value)
-{
-    echo '<pre>';
-    print_r($value);
-    var_dump($value);
-    echo '</pre>';
 }
