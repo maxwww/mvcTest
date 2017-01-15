@@ -1,21 +1,33 @@
 <?php
 
+namespace app\controllers;
+
+use maxw\web\Controller;
+
 /**
  * Class StartController
  */
-class StartController
+class StartController extends Controller
 {
+
+    //public $layout = 'another';
     /**
      *
      */
-    public function actionIndex(){
-        echo "hello from StartController->actionIndex()!";
+    public function actionIndex()
+    {
+        return $this->render('index', [
+            'variable' => "Hello from StartController->actionIndex()",
+        ]);
     }
 
     /**
      *
      */
-    public function actionStart(){
-        echo "hello from StartController->actionStart()!";
+    public function actionStart()
+    {
+        return $this->render('index', [
+            'variable' => "Hello from StartController->actionStart()",
+        ]);
     }
 }
