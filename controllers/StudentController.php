@@ -20,7 +20,7 @@ class StudentController extends Controller
         if ($arrStudents === null) {
             return $this->render('index', [
                 'page' => 'student',
-                'variable' => Student::NO_STUDENTS,
+                'variable' => "<div><a href=\"?r=student/add\" class=\"btn btn-warning btn-primary\">Add Student</a></div><br />" . Student::NO_STUDENTS,
             ]);
         } else {
             return $this->render('showAllStudents', [
@@ -33,8 +33,7 @@ class StudentController extends Controller
 
     public function actionAdd()
     {
-        if (isset($_POST['put']))
-        {
+        if (isset($_POST['put'])) {
             $student = new Student();
             $student->setName(isset($_POST['name']) ? $_POST['name'] : "no Name");
             $student->setAge(isset($_POST['age']) ? $_POST['age'] : "");
@@ -44,12 +43,29 @@ class StudentController extends Controller
             $student->setId(isset($_POST['id']) ? (int)$_POST['id'] : null);
 
             $student->putObject();
-            header('Location: ?r=student/view&id='.$student->getId());
+            header('Location: ?r=student/view&id=' . $student->getId());
             exit;
         }
 
         return $this->render('add', [
             'page' => 'student',
         ]);
+    }
+
+    public function actionView()
+    {
+        $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
+        if ($id !== null && file_exists(Student::homePath() . 'ins/' . $id)) {
+            $student = Student::getObjectById($id);
+            return $this->render('view', [
+                'student' => $student,
+                'page' => 'student',
+            ]);
+        } else {
+            return $this->render('index', [
+                'page' => 'student',
+                'variable' => Student::NO_STUDENT_WITH_SUCH_ID,
+            ]);
+        }
     }
 }

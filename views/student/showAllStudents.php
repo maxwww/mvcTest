@@ -4,7 +4,7 @@ use maxw\helpers\Html;
 ?>
 <div>
     <a href="?r=student/add" class="btn btn-warning btn-primary">Add Student</a>
-</div>
+</div><br>
 <table width="100%">
     <tr>
         <th>ID</th>
@@ -12,7 +12,7 @@ use maxw\helpers\Html;
     </tr>
     <?php foreach ($arrStudents as $student): ?>
         <tr>
-            <td><a href="r=student/view&id=<?= $student->getId() ?>"><?= Html::safeHtml($student->getId()) ?></a>
+            <td><a href="?r=student/view&id=<?= $student->getId() ?>"><?= Html::safeHtml($student->getId()) ?></a>
             </td>
             <td><?= Html::safeHtml($student->getName()) ?></td>
         </tr>
