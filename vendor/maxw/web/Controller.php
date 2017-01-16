@@ -13,7 +13,7 @@ class Controller
     public function render($view, $params = [])
     {
         $content = $this->renderView($view, $params);
-        return $this->renderContent($content);
+        return $this->renderContent($content, $params);
     }
 
     private function renderView($view, $params)
@@ -30,25 +30,22 @@ class Controller
             ob_implicit_flush(false);
             extract($params, EXTR_OVERWRITE);
             require($viewFile);
-
             return ob_get_clean();
         } else {
             throw new NoSuchFile("Such View is not found!");
         }
     }
 
-    private function renderContent($content)
+    private function renderContent($content, $params)
     {
         $layoutFile = $this->getLayoutFile();
-
         if (file_exists($layoutFile)) {
             ob_start();
             ob_implicit_flush(false);
+            extract($params, EXTR_OVERWRITE);
             require($layoutFile);
-
             return ob_get_clean();
         } else {
-            echo $layoutFile;
             throw new NoSuchFile("Such Layout is not found!");
         }
     }
