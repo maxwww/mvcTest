@@ -1,1 +1,0 @@
-<p style="color: crimson;"><?= $variable?></p>

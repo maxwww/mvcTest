@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'defaultroute' => 'default',
+    'defaultroute' => 'site',
 ];
