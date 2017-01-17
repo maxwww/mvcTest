@@ -26,8 +26,8 @@
         <nav class="blog-nav">
             <a class="blog-nav-item <?php echo $page == 'home' ? 'active' : ''?>" href="/">Home</a>
             <a class="blog-nav-item <?php echo $page == 'student' ? 'active' : ''?>" href="?r=student">Students</a>
-            <a class="blog-nav-item <?php echo $page == 'teachers' ? 'active' : ''?>" href="?r=start/teachers">Teachers</a>
-            <a class="blog-nav-item <?php echo $page == 'groups' ? 'active' : ''?>" href="?r=start/groups">Groups</a>
+            <a class="blog-nav-item <?php echo $page == 'teacher' ? 'active' : ''?>" href="?r=teacher">Teachers</a>
+            <a class="blog-nav-item <?php echo $page == 'group' ? 'active' : ''?>" href="?r=group">Groups</a>
         </nav>
     </div>
 </div>
@@ -57,7 +57,7 @@
             <div class="sidebar-module">
                 <h4>Links</h4>
                 <ol class="list-unstyled">
-                    <li><a href="https://github.com/maxwww/study">GitHub</a></li>
+                    <li><a href="https://github.com/maxwww/mvcTest">GitHub</a></li>
                 </ol>
             </div>
         </div><!-- /.blog-sidebar -->

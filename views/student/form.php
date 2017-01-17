@@ -1,5 +1,6 @@
 <?php
 use maxw\helpers\Html;
+use app\models\Group;
 
 ?>
 <div class="container">
@@ -64,8 +65,18 @@ use maxw\helpers\Html;
             <label for="course" class="col-sm-2 col-form-label">Group</label>
             <div class="col-sm-6">
                 <select name="group">
-                    <option value="511">511</option>
-                    <option value="512">512</option>
+                    <?php $groups = Group::getAllObjects();
+                    if (!empty($groups))
+                    {
+                        foreach ($groups as $id => $group)
+                        {
+                            $selected = isset($student) && $student->getGroup() == $group->getId() ? 'selected' : "";
+                            echo '<option value="'.$group->getId().'" '.$selected.'>'.Html::safeHtml($group->getName()).'</option>';
+                        }
+                    }
+
+                    ?>
+
                 </select>
             </div>
         </div>
@@ -76,7 +87,7 @@ use maxw\helpers\Html;
         <div class="form-group row">
             <div class="offset-sm-2 col-sm-10">
                 <button type="submit"
-                        class="btn btn-primary">Add Student</button>
+                        class="btn btn-primary"><?= $mod == 'add' ? 'Add' : 'Save' ?></button>
             </div>
         </div>
     </form>
