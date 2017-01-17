@@ -11,7 +11,7 @@ use maxw\helpers\Html;
     </tr>
     <?php foreach ($arrGroups as $group): ?>
         <tr>
-            <td><a href="?group/view&id=<?= $group->getId()?>"><?= Html::safeHtml($group->getId())?></a></td>
+            <td><a href="?r=group/view&id=<?= $group->getId()?>"><?= Html::safeHtml($group->getId())?></a></td>
             <td><?= Html::safeHtml($group->getName())?></td>
         </tr>
     <?php endforeach; ?>
