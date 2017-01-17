@@ -47,8 +47,9 @@ class StudentController extends Controller
             exit;
         }
 
-        return $this->render('add', [
+        return $this->render('form', [
             'page' => 'student',
+            'mod' => 'add',
         ]);
     }
 
@@ -68,4 +69,37 @@ class StudentController extends Controller
             ]);
         }
     }
+
+    public function actionEdit()
+    {
+        $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
+        if ($id !== null && file_exists(Student::homePath() . 'ins/' . $id)) {
+            $student = Student::getObjectById($id);
+            return $this->render('form', [
+                'student' => $student,
+                'page' => 'student',
+                'mod' => 'edit',
+            ]);
+
+        } else {
+            return $this->render('index', [
+                'page' => 'student',
+                'variable' => Student::NO_STUDENT_WITH_SUCH_ID,
+            ]);
+        }
+    }
+
+    public function actionDel()
+    {
+        $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
+        if ($id !== null && file_exists(Student::homePath().'ins/'.$id))
+        {
+            Student::deleteObjectById($id);
+        }
+        header('Location: ?r=student');
+        exit;
+
+    }
+
+
 }

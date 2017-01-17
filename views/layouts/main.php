@@ -26,8 +26,8 @@
         <nav class="blog-nav">
             <a class="blog-nav-item <?php echo $page == 'home' ? 'active' : ''?>" href="/">Home</a>
             <a class="blog-nav-item <?php echo $page == 'student' ? 'active' : ''?>" href="?r=student">Students</a>
-            <a class="blog-nav-item <?php echo $page == 'teachers' ? 'active' : ''?>" href="?r=start/teachers">Teachers</a>
-            <a class="blog-nav-item <?php echo $page == 'groups' ? 'active' : ''?>" href="?r=start/groups">Groups</a>
+            <a class="blog-nav-item <?php echo $page == 'teachers' ? 'active' : ''?>" href="?r=teacher">Teachers</a>
+            <a class="blog-nav-item <?php echo $page == 'groups' ? 'active' : ''?>" href="?r=group">Groups</a>
         </nav>
     </div>
 </div>
