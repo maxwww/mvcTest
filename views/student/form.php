@@ -71,7 +71,7 @@ use app\models\Group;
                         foreach ($groups as $id => $group)
                         {
                             $selected = isset($student) && $student->getGroup() == $group->getId() ? 'selected' : "";
-                            echo '<option value="'.$group->getId().'" '.$selected.'>'.$group->getName().'</option>';
+                            echo '<option value="'.$group->getId().'" '.$selected.'>'.Html::safeHtml($group->getName()).'</option>';
                         }
                     }
 
